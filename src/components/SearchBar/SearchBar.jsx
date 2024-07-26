@@ -1,18 +1,26 @@
+import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 
-export default function SearchBar({ searchQuery, onChange, serchPhoto }) {
+export default function SearchBar({ serchPhoto }) {
+  const [query, setQuery] = useState("");
+
   const updateSearch = (e) => {
+    setQuery(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    onChange(e.target.value);
+    if (!query) return;
+    serchPhoto(query);
   };
 
   return (
     <header>
-      <form onSubmit={serchPhoto}>
+      <form onSubmit={handleSubmit}>
         <input
           onChange={updateSearch}
           type="text"
-          value={searchQuery}
+          value={query}
           placeholder="Search images and photos"
         />
         <button type="submit">
