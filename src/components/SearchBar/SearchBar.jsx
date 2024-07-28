@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
+import toast from "react-hot-toast";
 
 export default function SearchBar({ serchPhoto }) {
   const [query, setQuery] = useState("");
@@ -10,7 +11,9 @@ export default function SearchBar({ serchPhoto }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!query) return;
+    if (!query) {
+      return toast.error("Search query can't be empty");
+    }
     serchPhoto(query);
   };
 
