@@ -1,16 +1,14 @@
 import css from "./App.module.css";
 import SearchBar from "../SearchBar/SearchBar";
+import ImageGallery from "../ImageGallery/ImageGallery";
+import Loader from "../Loader/Loader";
 import api from "../api";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Toaster } from "react-hot-toast";
-import ImageGallery from "../ImageGallery/ImageGallery";
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
-  // useEffect(() => {
-  //   setSearchQuery(searchQuery);
-  // }, [searchQuery]);
 
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -22,7 +20,6 @@ export default function App() {
   //   console.log(response);
   // }
   const serchPhoto = (query) => {
-    console.log(query);
     try {
       setArticles([]);
       setError(false);
@@ -40,7 +37,8 @@ export default function App() {
     <div className={css.container}>
       <h1>AppStart</h1>
       <SearchBar serchPhoto={serchPhoto} />
-      <ImageGallery images={articles} />
+      {loading && <Loader />}
+      {articles.total > 0 && <ImageGallery images={articles} />}
       <Toaster />
     </div>
   );

@@ -3,8 +3,7 @@ import ImageCard from "../ImageCard/ImageCard";
 export default function ImageGallery({ images }) {
   return (
     <ul>
-      {images.map((image) => {
-        console.log(image);
+      {images.results.map((image) => {
         return (
           <li key={image.id}>
             <ImageCard img={image} />
