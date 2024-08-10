@@ -11,10 +11,10 @@ export default function SearchBar({ serchPhoto }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!query) {
+    if (!query.trim()) {
       return toast.error("Search query can't be empty");
     }
-    serchPhoto(query);
+    serchPhoto(query.trim());
   };
 
   return (

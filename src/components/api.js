@@ -1,21 +1,18 @@
 import axios from "axios";
-import toast from "react-hot-toast";
+const API_KEY = "W3sW7W8ecbaQDhqbZ7j602qIs0WpCxzsiIrb5YQ84Sk";
+axios.defaults.baseURL = "https://api.unsplash.com/";
+axios.defaults.params = {
+  orientation: "landscape",
+  per_page: 12,
+  client_id: API_KEY,
+};
 
-export default function api(query, page = 1) {
-  const API_KEY = "W3sW7W8ecbaQDhqbZ7j602qIs0WpCxzsiIrb5YQ84Sk";
-  const BASE_URL = "https://api.unsplash.com";
-  const END_POINT = "/search/photos";
-  const params = {
-    query,
-    page,
-    client_id: API_KEY,
-  };
-  const options = new URLSearchParams(params);
-  console.log(options);
-  return fetch(`${BASE_URL}${END_POINT}/?${options}`).then((res) => {
-    if (!res.ok) {
-      return toast.error("ERROR");
-    }
-    return res.json();
+export default async function api(query, page) {
+  const res = await axios.get("search/photos", {
+    params: {
+      page,
+      query,
+    },
   });
+  return res;
 }
