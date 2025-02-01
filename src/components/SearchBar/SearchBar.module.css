@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #3645ab;
+}
+.btn {
+  border: none;
+  background-color: #fff;
+  height: auto;
+  cursor: pointer;
+  padding: 0;
+  height: 33px;
+  width: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input {
+  padding: 5px;
+  margin: 5px 0;
+  border: none;
+  font-size: 20px;
+}
+
+.icon {
+  height: 25px;
+  width: 25px;
+}

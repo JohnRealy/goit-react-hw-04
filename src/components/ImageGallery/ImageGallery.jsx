@@ -1,10 +1,11 @@
 import ImageCard from "../ImageCard/ImageCard";
-export default function ImageGallery({ articles }) {
+import css from "./ImageGallery.module.css";
+export default function ImageGallery({ articles, openModal }) {
   return (
-    <ul>
+    <ul className={css.list}>
       {articles.map((image) => (
         <li key={image.id}>
-          <ImageCard />
+          <ImageCard img={image} openModal={openModal} />
         </li>
       ))}
     </ul>

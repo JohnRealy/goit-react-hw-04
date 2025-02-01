@@ -1,11 +1,11 @@
 import axios from "axios";
 
-export default function api({ query, page }) {
+const API_KEY = import.meta.env.VITE_UNSPLASH_KEY;
+
+export default function api({ searchQuery, page }) {
   axios.defaults.baseURL = "https://api.unsplash.com/";
-  axios.defaults.headers.common[
-    "Authorization"
-  ] = `Client-ID ${api.env.REACT_APP_UNSPLASH_KEY}`;
+  axios.defaults.headers.common["Authorization"] = `Client-ID ${API_KEY}`;
   return axios.get(
-    `search/photos?query=${query}&per_page=12&orientation=landscape&page=${page}`
+    `search/photos?query=${searchQuery}&per_page=12&orientation=landscape&page=${page}`
   );
 }

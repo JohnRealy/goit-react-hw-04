@@ -1,3 +1,3 @@
 export default function ErrorMessage() {
-  return <div></div>;
+  return <h2>Oops... Something went wrong.</h2>;
 }
